@@ -1,4 +1,4 @@
-<?php namespace App\Commands;
+<?php namespace DutGRIFF\Commands;
 
 abstract class Command {
 

@@ -1,6 +1,6 @@
-<?php namespace App\Services;
+<?php namespace DutGRIFF\Services;
 
-use App\User;
+use DutGRIFF\User;
 use Validator;
 use Illuminate\Contracts\Auth\Registrar as RegistrarContract;
 

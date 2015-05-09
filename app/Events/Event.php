@@ -1,4 +1,4 @@
-<?php namespace App\Events;
+<?php namespace DutGRIFF\Events;
 
 abstract class Event {
 
