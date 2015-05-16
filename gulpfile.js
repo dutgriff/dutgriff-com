@@ -12,15 +12,15 @@ var elixir = require('laravel-elixir');
  */
 
 elixir(function(mix) {
-  mix.less('app.less', 'resources/css');
+  mix.less('app.less', 'resources/css/built');
   mix.styles([
-    'app.css'
+    'built/app.css'
   ], 'public/css', 'resources/css');
-  mix.coffee('app.coffee', 'resources/js');
+  mix.coffee('app.coffee', 'resources/js/built');
   mix.scripts([
     'libs/jquery-2.1.4.min.js',
     'libs/bootstrap.min.js',
-    'app.js'
+    'built/app.js'
   ], 'public/js', 'resources/js');
 
   ////landing page

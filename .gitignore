@@ -4,7 +4,5 @@
 /public/images/*
 /public/css/*
 /public/js/*
-/resources/js/*
-!/resources/js/libs
-/resources/css/*
-!/resources/css/libs
+/resources/js/built
+/resources/css/built
