@@ -2,3 +2,9 @@
 /node_modules
 .env
 /public/images/*
+/public/css/*
+/public/js/*
+/resources/js/*
+!/resources/js/libs
+/resources/css/*
+!/resources/css/libs
