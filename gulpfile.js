@@ -23,11 +23,13 @@ elixir(function(mix) {
     'built/app.js'
   ], 'public/js', 'resources/js');
 
-  ////landing page
-  //mix.styles('landing.css', 'public/css/landing.css');
-  //mix.coffee('landing.coffee', 'resources/js');
-  //mix.scripts([
-  //  'libs/jquery.stellar.min.js',
-  //  'landing.js'
-  //], 'public/js/landing.js');
+  //landing page
+  mix.styles([
+    'landing.css'
+  ], 'public/css/landing.css', 'resources/css');
+  mix.coffee('landing.coffee', 'resources/js/built');
+  mix.scripts([
+    'libs/jquery.stellar.min.js',
+    'built/landing.js'
+  ], 'public/js/landing.js', 'resources/js');
 });

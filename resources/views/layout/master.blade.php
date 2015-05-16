@@ -15,8 +15,6 @@
 		<script src="//oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 	<![endif]-->
 
-  <script src="{{ asset('js/jquery-2.1.4.min.js') }}"></script>
-
   @yield('head-content')
 
 </head>
@@ -27,7 +25,7 @@
 
 	@yield('content')
 
-  <script src="/js/all.css"></script>
+  <script src="/js/all.js"></script>
   @yield('scripts')
 </body>
 </html>
