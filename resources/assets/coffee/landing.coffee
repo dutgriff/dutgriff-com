@@ -6,5 +6,7 @@ $ ->
     $('.landingContent')
       .css 'transform', 'translateY(-' + scrollTop + 'px)'
       .css 'opacity', ''+(landingHeight - scrollTop*2) / landingHeight+''
-    return
-  return
+    if scrollTop > 40
+      $('#landingBody .scrollDown').hide()
+    else
+      $('#landingBody .scrollDown').show()
