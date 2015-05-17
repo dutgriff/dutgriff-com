@@ -1,3 +1,4 @@
+var gulp = require("gulp");
 var elixir = require('laravel-elixir');
 
 /*
@@ -12,23 +13,22 @@ var elixir = require('laravel-elixir');
  */
 
 elixir(function(mix) {
-  mix.less('app.less', 'resources/css/built');
-  mix.styles([
-    'built/app.css'
-  ], 'public/css', 'resources/css');
-  mix.coffee('app.coffee', 'resources/js/built');
-  mix.scripts([
-    'libs/jquery-2.1.4.min.js',
-    'libs/bootstrap.min.js',
-    'built/app.js'
-  ], 'public/js', 'resources/js');
+  mix.less('*.less', 'resources/css/built')
+    .styles([
+      'built/app.css'
+    ], 'public/css', 'resources/css')
+    .coffee('*.coffee', 'resources/js/built')
+    .scripts([
+      'libs/jquery-2.1.4.min.js',
+      'libs/bootstrap.min.js',
+      'built/app.js'
+    ], 'public/js', 'resources/js');
 
   //landing page
   mix.styles([
-    'landing.css'
-  ], 'public/css/landing.css', 'resources/css');
-  mix.coffee('landing.coffee', 'resources/js/built');
-  mix.scripts([
-    'built/landing.js'
-  ], 'public/js/landing.js', 'resources/js');
+      'built/landing.css'
+    ], 'public/css/landing.css', 'resources/css')
+    .scripts([
+      'built/landing.js'
+    ], 'public/js/landing.js', 'resources/js');
 });

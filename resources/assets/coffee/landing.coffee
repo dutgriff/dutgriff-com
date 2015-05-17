@@ -6,6 +6,6 @@ $ ->
     landingHeight = $('#landingBody').height()
     $('.landingContent')
       .css 'transform', 'translateY(-' + scrollTop + 'px)'
-      .css 'opacity', ''+(landingHeight - scrollTop) / landingHeight+''
+      .css 'opacity', ''+(landingHeight - scrollTop*2) / landingHeight+''
     return
   return

@@ -35,66 +35,53 @@
 .landingText {
   color: #19A6FF;
   background-image: -webkit-linear-gradient(92deg, #19A6FF, #508C7B);
+  background-clip: text; // This is still webkit only
   -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  -webkit-animation: hue 45s infinite linear;
+  text-fill-color: transparent;
+  animation: hue 45s infinite linear;
 }
 .landingHeading {
   font-size: 72px;
   font-weight: 100;
   margin-top: -10px;
   margin-bottom: 0;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-fill-color: transparent;
 }
 
-@-webkit-keyframes hue {
+@keyframes hue {
   0%, 100% {
-    -webkit-filter: hue-rotate(360deg);
+    filter: hue-rotate(360deg);
   }
   50% {
-    -webkit-filter: hue-rotate(180deg);
+    filter: hue-rotate(180deg);
   }
 }
 
 .scrollDown {
   position: absolute;
   bottom: 20px;
-  left: 100px;
+  left: 10%;
 }
 
 .scrollDown img{
   width: 80px;
   margin-bottom: 10px;
- /* -webkit-animation: gray-scale 3s infinite linear;
-  -webkit-filter: grayscale(100%);*/
-  -webkit-animation: opacity-scale 5s infinite linear;
+  animation: opacity-scale 5s infinite linear;
   opacity: 0;
   display: block;
 }
 .scrollDown img:nth-child(1) {
-  -webkit-animation-delay: .125s;
+  animation-delay: .125s;
 }
 .scrollDown img:nth-child(2) {
-  -webkit-animation-delay: .25s;
+  animation-delay: .25s;
 }
 .scrollDown img:nth-child(3) {
-  -webkit-animation-delay: .375s;
+  animation-delay: .375s;
 }
 
-@-webkit-keyframes gray-scale {
-  0%, 20% {
-    -webkit-filter: grayscale(100%);
-  }
-  10% {
-    -webkit-filter: grayscale(0%);
-  }
-  100% {
-    -webkit-filter: grayscale(100%);
-  }
-}
-
-@-webkit-keyframes opacity-scale {
+@keyframes opacity-scale {
   0%, 10% {
     opacity: 0;
   }
