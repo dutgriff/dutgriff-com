@@ -1,7 +1,10 @@
 {
   "private": true,
-  "devDependencies": {
+  "devDependencies": {},
+  "dependencies": {
+    "autoprefixer-core": "^5.1.11",
     "gulp": "^3.8.8",
+    "gulp-postcss": "^5.1.6",
     "laravel-elixir": "*"
   }
 }
