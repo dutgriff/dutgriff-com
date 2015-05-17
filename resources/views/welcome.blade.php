@@ -4,7 +4,7 @@
   <link href='css/landing.css' rel='stylesheet' type='text/css'>
 @stop
 
-@section('prepage-content')
+@section('header')
   <div id="landingBody">
     <div class="scrollDown">
       <img src="images/arrow.png" />

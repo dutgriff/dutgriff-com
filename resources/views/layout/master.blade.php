@@ -19,11 +19,15 @@
 
 </head>
 <body>
+  @yield('header')
+
   @yield('prepage-content')
 
   @include('layout.navbar')
 
-	@yield('content')
+  <div class="container">
+    @yield('content')
+  </div>
 
   <script src="/js/all.js"></script>
   @yield('scripts')
