@@ -29,7 +29,6 @@ elixir(function(mix) {
   ], 'public/css/landing.css', 'resources/css');
   mix.coffee('landing.coffee', 'resources/js/built');
   mix.scripts([
-    'libs/jquery.stellar.min.js',
     'built/landing.js'
   ], 'public/js/landing.js', 'resources/js');
 });

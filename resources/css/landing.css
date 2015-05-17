@@ -2,34 +2,20 @@
 
 #landingBody {
   background-color: black;
+
   font-family: 'Lato';
   font-weight: 300;
 
   width: 100vw;
   height: 100vh;
 }
-.landingContainer:before {
-  content: "";
-  position: fixed;
-  left: 0;
-  right: 0;
-
-  display: block;
-  /*
-    Blurred images can be compressed smaller. I could have used
-    css but it would have been more downloading and processing.
-  */
+.landingContainer {
   background-image: url(/images/welcome-background-blur.jpg);
-  width: 100%;
-  height: 100%;
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center center;
-
   opacity: .7;
-}
 
-.landingContainer {
   width: 100%;
   height: 100%;
 }
@@ -38,7 +24,7 @@
   height: 150px;
 
   text-align: center;
-  position: fixed;
+  position: absolute;
   bottom: 30px;
   right: 30px;
 
