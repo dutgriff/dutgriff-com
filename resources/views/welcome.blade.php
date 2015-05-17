@@ -6,6 +6,11 @@
 
 @section('prepage-content')
   <div id="landingBody">
+    <div class="scrollDown">
+      <img src="images/arrow.png" />
+      <img src="images/arrow.png" />
+      <img src="images/arrow.png" />
+    </div>
     <div class="landingContainer">
       <div class="landingContent">
         <div class="landingText">
@@ -19,10 +24,8 @@
 @stop
 
 @section('content')
-  <div>
-    this is the next section<br />
-    Here
-  </div>
+  this is the next section<br />
+  Here
 @stop
 
 @section('scripts')
