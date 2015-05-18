@@ -14,6 +14,37 @@ h1 .h1-appendage {
   font-style: italic;
 }
 
+.row.container-inlay-container {
+  margin-bottom: 25px;
+  margin-top: 25px;
+
+  > .container-inlay {
+
+    padding-bottom: 25px;
+    padding-top: 25px;
+
+    > :first-child {
+      margin-top: 0;
+    }
+
+    &.inverse {
+      color: @text-color-inverse;
+
+      &::before {
+        content: ' ';
+        display: block;
+        position: absolute;
+        width: 200vw;
+        left: -50vw;
+        top: 0;
+        bottom: 0;
+        background-color: @brand-primary-inverse;
+        z-index: -1;
+      }
+    }
+  }
+}
+
 #footer {
   color: @navbar-default-color;
   margin-top: 20px;
