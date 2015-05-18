@@ -164,7 +164,7 @@
 .navbar-brand {
   float: left;
   padding: @navbar-padding-vertical @navbar-padding-horizontal;
-  font-size: @font-size-large;
+  font-size: @navbar-default-brand-font-size;
   line-height: @line-height-computed;
   height: @navbar-height;
 
@@ -412,6 +412,7 @@
   .navbar-nav {
     > li > a {
       color: @navbar-default-link-color;
+      font-size: @navbar-default-link-font-size;
 
       &:hover,
       &:focus {
