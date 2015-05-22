@@ -24,50 +24,74 @@
 @stop
 
 @section('content')
-  <h1>Welcome to DutGRIFF.com</h1>
+  <h1>Welcome to DutGRIFF.com <span class="h5">(Alpha)</span></h1>
   <p>
-    Hello. My name is Dustin Griffith. I am a freelance software developer with big ambitions and a short attention
-    span. I love to build things.
+    My name is Dustin Griffith and this is my website. I am a freelance software developer with big ambitions and a
+    short attention span. I love to build things.
   </p>
-  <h1>How about some Lorem Ipsum</h1>
   <p>
-    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna
-    aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-    Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur
-    sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+    This site will tell you just about everything you need to know about me and my work. It may be a while before this
+    site becomes what I intend for it to be. I work on it when I can but my clients obviously comes first.
   </p>
+
   <div class="row container-inlay-container">
     <div class="col-xs-12 container-inlay inverse inverse-warning">
-      <h1>A Big Lorem Ipsum</h1>
-      <p>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna
-        aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-        Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur
-        sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna
-        aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-        Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur
-        sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna
-        aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-        Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur
-        sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-      </p>
+      <h2>Under Construction</h2>
+      Although there is a development and local version for testing you may see some unfinished work on this site. This
+      is intentional. Normally I wouldn't push incomplete code to a production environment but this site is still in
+      the Alpha phase. We are getting there.
     </div>
   </div>
-  <h1>And again</h1>
+
+  <h2>Site Agenda</h2>
   <p>
-    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna
-    aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-    Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur
-    sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+    Here is an outline of some of the features that are on the agenda:
   </p>
-  <h1>And once more</h1>
+  <dl class="dl-horizontal">
+    <dt>Site Footer</dt>
+    <dd>
+      This one should be done soon actually. Links and contact info will be here.
+    </dd>
+    <dt>Browser Support</dt>
+    <dd>
+      Because the theme and layout is constantly changing I focus only on how it looks in Chrome. Once I get a more
+      stable theme I will make it work with the most used browsers and mobile devices.
+    </dd>
+    <dt>Hire Me Page</dt>
+    <dd>
+      Here we will get more in depth as to what I do and can do for clients. I will show off some of my work as well as
+      give the technical inquirers a rundown of my workflow, languages and capabilities.
+    </dd>
+    <dt>User Roles</dt>
+    <dd>
+      Allow users to request and/or be granted specific roles allowing them access to more of the sites features.
+    </dd>
+    <dt>Time Punch</dt>
+    <dd>
+      My AngularJS project time tracker. This is how I log my hours. It will allows users with a 'client' role to see
+      how much time I spend on a project assigned to them and allow them to see in depth where the time goes.
+    </dd>
+    <dt>About Me</dt>
+    <dd>
+      This will be a page telling you more than you care to read about me. It will get a lot more personal than the
+      welcome page. I have a huge variety of interests and here I will tell you about a lot of them.
+    </dd>
+  </dl>
+
+  <h2>Looking to hire?</h2>
   <p>
-    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna
-    aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-    Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur
-    sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+    If you are here in search of a developer feel free to <a href="mailto:sites@dutgriff.com">email</a> me. Whether you
+    are looking for a new site, improvements to an existing one, a sophisticated web app or are just curious how I can
+    help you or your business, a simple email is all it takes to get us started.
+  </p>
+
+  <h2>Technical Specs</h2>
+  <p>
+    This site is hosted on an AWS EC2 micro instance running Ubuntu 14.04 LTS. The web server is NGINX serving up PHP 5
+    (<a href="//wiki.php.net/rfc/php7timeline">for now</a>) with MySQL as the DBMS. I am using the Laravel PHP
+    framework. The theme is custom built off of Twitter Bootstrap compiled from less with every build. I use javascript
+    compiled from coffee script and some third party javascript libraries. Most of the code for this is located on
+    <a href="//github.com/dutgriff/dutgriff-com">the Github repository</a>.
   </p>
 @stop
 
