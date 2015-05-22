@@ -25,8 +25,10 @@
 
   @yield('prepage-content')
 
-  <div class="container">
+  <div id="main-container" class="container">
+
     @yield('content')
+
   </div>
 
   @include('layout._footer')
