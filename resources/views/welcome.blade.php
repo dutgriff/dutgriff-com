@@ -90,8 +90,8 @@
     This site is hosted on an AWS EC2 micro instance running Ubuntu 14.04 LTS. The web server is NGINX serving up PHP 5
     (<a href="//wiki.php.net/rfc/php7timeline">for now</a>) with MySQL as the DBMS. I am using the Laravel PHP
     framework. The theme is custom built off of Twitter Bootstrap compiled from less with every build. I use javascript
-    compiled from coffee script and some third party javascript libraries. Most of the code for this is located on
-    <a href="//github.com/dutgriff/dutgriff-com">the Github repository</a>.
+    compiled from coffee script and some third party javascript libraries. Git is the version control system. You can
+    see <a href="//github.com/dutgriff/dutgriff-com">this repository on Github</a> for most of the code used.
   </p>
 @stop
 
