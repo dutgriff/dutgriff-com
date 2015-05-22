@@ -23,28 +23,28 @@
 						<input type="hidden" name="token" value="{{ $token }}">
 
 						<div class="form-group">
-							<label class="col-md-4 control-label">E-Mail Address</label>
-							<div class="col-md-6">
+							<label class="control-label sr-only">E-Mail Address</label>
+							<div class="col-md-6 col-md-offset-3">
 								<input type="email" class="form-control" name="email" value="{{ old('email') }}">
 							</div>
 						</div>
 
 						<div class="form-group">
-							<label class="col-md-4 control-label">Password</label>
-							<div class="col-md-6">
+							<label class="control-label sr-only">Password</label>
+							<div class="col-md-6 col-md-offset-3">
 								<input type="password" class="form-control" name="password">
 							</div>
 						</div>
 
 						<div class="form-group">
-							<label class="col-md-4 control-label">Confirm Password</label>
-							<div class="col-md-6">
+							<label class="control-label sr-only">Confirm Password</label>
+							<div class="col-md-6 col-md-offset-3">
 								<input type="password" class="form-control" name="password_confirmation">
 							</div>
 						</div>
 
 						<div class="form-group">
-							<div class="col-md-6 col-md-offset-4">
+							<div class="col-md-6 col-md-offset-6">
 								<button type="submit" class="btn btn-primary">
 									Reset Password
 								</button>
