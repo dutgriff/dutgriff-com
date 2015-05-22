@@ -14,6 +14,8 @@ h1 .h1-appendage {
   font-style: italic;
 }
 
+@text-color-inverse:            @body-bg;
+
 .row.container-inlay-container {
   margin-bottom: 25px;
   margin-top: 25px;
@@ -38,8 +40,38 @@ h1 .h1-appendage {
         left: -50vw;
         top: 0;
         bottom: 0;
-        background-color: @brand-primary-inverse;
+        background-color: @gray;
         z-index: -1;
+      }
+      &.inverse-primary {
+        &::before {
+          background-color: @brand-primary;
+          // Let's do some link stuff here
+        }
+      }
+      &.inverse-info {
+        &::before {
+          background-color: @brand-info;
+          // Let's do some link stuff here
+        }
+      }
+      &.inverse-success {
+        &::before {
+          background-color: @brand-success;
+          // Let's do some link stuff here
+        }
+      }
+      &.inverse-warning {
+        &::before {
+          background-color: @brand-warning;
+          // Let's do some link stuff here
+        }
+      }
+      &.inverse-danger {
+        &::before {
+          background-color: @brand-danger;
+          // Let's do some link stuff here
+        }
       }
     }
   }
