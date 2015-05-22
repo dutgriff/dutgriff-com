@@ -23,6 +23,20 @@
 
   @include('layout._navbar')
 
+  <noscript>
+    <div id="no-script-warning" class="container">
+      <div class="row container-inlay-container">
+        <div class="col-xs-12 container-inlay inverse inverse-danger">
+          <span class="h3">Whoa!</span> It's {{ Carbon\Carbon::now()->year }} and you don't have Javascript enabled. Unless you are doing this for a
+          specific reason I'd suggest turning Javascript on to get the most out of this website and just about every other
+          site.
+          Here are the <a href="http://www.enable-javascript.com/" target="_blank"> instructions on how to enable JavaScript
+            in your web browser</a>.
+        </div>
+      </div>
+    </div>
+  </noscript>
+
   @yield('prepage-content')
 
   <div id="main-container" class="container">
