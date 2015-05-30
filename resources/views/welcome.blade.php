@@ -7,9 +7,9 @@
 @section('header')
   <div id="landingBody">
     <div class="scrollDown">
-      <img src="images/arrow.png" />
-      <img src="images/arrow.png" />
-      <img src="images/arrow.png" />
+      <img src="images/theme/arrow.png" />
+      <img src="images/theme/arrow.png" />
+      <img src="images/theme/arrow.png" />
     </div>
     <div class="landingContainer">
       <div class="landingContent">

@@ -2,6 +2,7 @@
 /node_modules
 .env
 /public/images/*
+!/public/images/theme
 /public/css/*
 /public/js/*
 /resources/js/built
