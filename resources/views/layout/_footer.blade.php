@@ -40,5 +40,8 @@
         </a></li>
       </ul>
     </div>
+    <div class="col-xs-12 text-right">
+      &copy; 2015{{ Carbon\Carbon::now()->year==2015?"":" - ".Carbon\Carbon::now()->year }} DutGRIFF, Inc.
+    </div>
   </div>
 </div>
