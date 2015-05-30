@@ -48,10 +48,6 @@
     Here is an outline of some of the features that are on the agenda:
   </p>
   <dl class="dl-horizontal">
-    <dt>Site Footer</dt>
-    <dd>
-      This one should be done soon actually. Links and contact info will be here.
-    </dd>
     <dt>Browser Support</dt>
     <dd>
       Because the theme and layout is constantly changing I focus only on how it looks in Chrome. Once I get a more
