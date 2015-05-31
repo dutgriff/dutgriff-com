@@ -7,15 +7,15 @@
 @section('header')
   <div id="landingBody">
     <div class="scrollDown">
-      <img src="images/theme/arrow.png" />
-      <img src="images/theme/arrow.png" />
-      <img src="images/theme/arrow.png" />
+      <img src="images/theme/arrow.png"/>
+      <img src="images/theme/arrow.png"/>
+      <img src="images/theme/arrow.png"/>
     </div>
     <div class="landingContainer">
       <div class="landingContent">
         <div class="landingText">
           <h1 class="landingHeading">DutGRIFF.com</h1>
-          Let's build something awesome! <br />
+          Let's build something awesome! <br/>
           <b><a href="mailto:sites@dutgriff.com">sites@dutgriff.com</a></b>
         </div>
       </div>
