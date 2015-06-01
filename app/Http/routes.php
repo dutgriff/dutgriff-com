@@ -12,6 +12,7 @@
 */
 
 Route::get('/', 'WelcomeController@index');
+Route::get('/timepunch', 'TimepunchController@index');
 
 Route::get('home', 'HomeController@index');
 
