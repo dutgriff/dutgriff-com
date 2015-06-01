@@ -21,6 +21,8 @@ elixir(function(mix) {
     .scripts([
       'libs/jquery-2.1.4.min.js',
       'libs/bootstrap.min.js',
+      'libs/vue.min.js',
+      'timepunch.js',
       'built/app.js'
     ], 'public/js', 'resources/js');
 
