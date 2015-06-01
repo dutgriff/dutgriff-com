@@ -7,26 +7,35 @@
     <table class="table table-striped">
       <thead>
         <tr>
-          <th v-repeat="column: columns">@{{ column.placeholder | capitalize }}</th>
+          <th v-repeat="columns">@{{ placeholder | capitalize }}</th>
         </tr>
       </thead>
       <tbody>
-        <tr v-repeat="punches">
-          <td>@{{ start }}</td>
-          <td>@{{ end }}</td>
-          <td>@{{ name }}</td>
-          <td>@{{ description }}</td>
-          <td>@{{ tags }}</td>
+        <tr v-repeat="punch: punches">
+          <td v-repeat="columns">@{{ punch[name] }}</td>
         </tr>
         <tr>
-          <td form="new-punch" class="form-group" v-repeat="columns">
-            <label class="sr-only" for="@{{ name }}">@{{ placeholder }}</label>
-            <input type="text"
-                   class="form-control"
-                   id="@{{ name }}"
-                   placeholder="@{{ placeholder }}"
-                   v-model="newPunch[name]"
-                />
+          <td form="new-punch" class="form-group">
+            <label class="sr-only" for="start">Start Time</label>
+            <input type="text" class="form-control" id="start" placeholder="Start Time" v-model="newPunch.start"/>
+          </td>
+          <td form="new-punch" class="form-group">
+            <label class="sr-only" for="end">End Time</label>
+            <input type="text" class="form-control" id="end" placeholder="End Time" v-model="newPunch.end"/>
+          </td>
+          <td form="new-punch" class="form-group">
+            <label class="sr-only" for="name">Name</label>
+            <input type="text" class="form-control" id="name" placeholder="Name" v-model="newPunch.name"/>
+          </td>
+          <td form="new-punch" class="form-group">
+            <label class="sr-only" for="description">Description</label>
+            <input type="text" class="form-control" id="description" placeholder="Description" v-model="newPunch.description"/>
+          </td>
+          <td form="new-punch" class="form-group">
+            <label class="sr-only" for="tags">Tags</label>
+            <select class="form-control" multiple id="tags" v-model="newPunch.tags">
+              <option v-repeat="tag: tags">@{{ tag }}</option>
+            </select>
           </td>
         </tr>
       </tbody>
