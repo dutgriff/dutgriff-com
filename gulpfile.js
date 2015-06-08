@@ -26,7 +26,6 @@ elixir(function(mix) {
       'libs/vue.min.js',
       'libs/select2.min.js',
       'libs/moment.js',
-      'libs/bootstrap-datetimepicker.js',
       'timepunch.js',
       'built/app.js'
     ], 'public/js', 'resources/js');

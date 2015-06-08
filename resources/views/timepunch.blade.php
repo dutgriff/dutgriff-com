@@ -7,32 +7,39 @@
     <table class="table table-striped">
       <thead>
         <tr>
-          <th v-repeat="columns">@{{ placeholder | capitalize }}</th>
+          <th>Start Time</th>
+          <th>End Time</th>
+          <th>Name</th>
+          <th>Description</th>
+          <th>Tags</th>
         </tr>
       </thead>
       <tbody>
         <tr v-repeat="punch: punches">
-          <td v-repeat="columns">@{{ punch[name] }}</td>
+          <td>@{{ punch.start | getTime }}</td>
+          <td>@{{ punch.end | getTime }}</td>
+          <td>@{{ punch.name }}</td>
+          <td>@{{ punch.description }}</td>
+          <td>@{{ punch.tags }}</td>
         </tr>
         <tr>
           <td id="start-time" form="new-punch" class="form-group">
             <label class="sr-only" for="start">Start Time</label>
             <input
                 type="text"
-                class="form-control datetimepicker"
+                class="form-control"
                 id="start"
                 placeholder="Start Time"
                 v-model="newPunch.start"/>
           </td>
           <td id="end-time" form="new-punch" class="form-group">
             <label class="sr-only" for="end">End Time</label>
-              <input
-                  type='text'
-                  class="form-control datetimepicker"
-                  id="end"
-                  placeholder="End Time"
-                  v-model="newPunch.end"/>
-            </div>
+            <input
+                type='text'
+                class="form-control"
+                id="end"
+                placeholder="End Time"
+                v-model="newPunch.end"/>
           </td>
           <td form="new-punch" class="form-group">
             <label class="sr-only" for="name">Name</label>
