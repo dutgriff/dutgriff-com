@@ -15,13 +15,24 @@
           <td v-repeat="columns">@{{ punch[name] }}</td>
         </tr>
         <tr>
-          <td form="new-punch" class="form-group">
+          <td id="start-time" form="new-punch" class="form-group">
             <label class="sr-only" for="start">Start Time</label>
-            <input type="text" class="form-control" id="start" placeholder="Start Time" v-model="newPunch.start"/>
+            <input
+                type="text"
+                class="form-control datetimepicker"
+                id="start"
+                placeholder="Start Time"
+                v-model="newPunch.start"/>
           </td>
-          <td form="new-punch" class="form-group">
+          <td id="end-time" form="new-punch" class="form-group">
             <label class="sr-only" for="end">End Time</label>
-            <input type="text" class="form-control" id="end" placeholder="End Time" v-model="newPunch.end"/>
+              <input
+                  type='text'
+                  class="form-control datetimepicker"
+                  id="end"
+                  placeholder="End Time"
+                  v-model="newPunch.end"/>
+            </div>
           </td>
           <td form="new-punch" class="form-group">
             <label class="sr-only" for="name">Name</label>
@@ -29,7 +40,8 @@
           </td>
           <td form="new-punch" class="form-group">
             <label class="sr-only" for="description">Description</label>
-            <input type="text" class="form-control" id="description" placeholder="Description" v-model="newPunch.description"/>
+            <input type="text" class="form-control" id="description" placeholder="Description"
+                   v-model="newPunch.description"/>
           </td>
           <td form="new-punch" class="form-group">
             <label class="sr-only" for="tags">Tags</label>

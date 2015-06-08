@@ -45,3 +45,7 @@ new Vue({
 $("#tags").select2({
   tags: true
 });
+
+$('.datetimepicker').datetimepicker({
+  format: "HH:mm"
+});

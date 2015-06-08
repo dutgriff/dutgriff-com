@@ -13,10 +13,11 @@ var elixir = require('laravel-elixir');
  */
 
 elixir(function(mix) {
+
   mix.less('*.less', 'resources/css/built')
     .styles([
       'built/app.css',
-      'libs/select2.min.css'
+      'libs/select2.min.css',
     ], 'public/css', 'resources/css')
     .coffee('*.coffee', 'resources/js/built')
     .scripts([
@@ -24,6 +25,8 @@ elixir(function(mix) {
       'libs/bootstrap.min.js',
       'libs/vue.min.js',
       'libs/select2.min.js',
+      'libs/moment.js',
+      'libs/bootstrap-datetimepicker.js',
       'timepunch.js',
       'built/app.js'
     ], 'public/js', 'resources/js');
