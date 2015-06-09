@@ -1,6 +1,7 @@
 <?php namespace DutGRIFF\Http\Controllers;
 
 use Carbon\Carbon;
+use DutGRIFF\Transformers\PunchesTransformer;
 use DutGRIFF\Http\Requests;
 use DutGRIFF\Http\Controllers\Controller;
 
@@ -10,7 +11,20 @@ use Illuminate\Support\Facades\Response;
 
 class PunchController extends Controller {
 
-	/**
+    /**
+     * @var DutGRIFF\Transformers\PunchesTransformer
+     */
+    protected $punchesTransformer;
+
+    /**
+     * @param PunchesTransformer $punchesTransformer
+     */
+    function __construct(PunchesTransformer $punchesTransformer)
+    {
+        $this->punchesTransformer = $punchesTransformer;
+    }
+
+    /**
 	 * Display a listing of the resource.
 	 *
 	 * @return Response
@@ -20,7 +34,7 @@ class PunchController extends Controller {
         $punches = Punch::with('tags')->get();
 
 		return Response::json([
-           'data' => $this->apiDataCollection($punches)
+           'data' => $this->punchesTransformer->transformCollection($punches->toArray())
         ], 200);
 	}
 
@@ -63,7 +77,7 @@ class PunchController extends Controller {
         }
 
         return Response::json([
-           'data' => $this->apiData($punch->toArray())
+           'data' => $this->punchesTransformer->transform($punch->toArray())
         ], 200);
 	}
 
@@ -99,23 +113,5 @@ class PunchController extends Controller {
 	{
 		//
 	}
-
-    private function apiDataCollection($punches)
-    {
-        return array_map([$this, 'apiData'], $punches->toArray());
-    }
-
-    private function apiData($punch) {
-        return [
-            'start'       => Carbon::parse($punch['start'])->timestamp,
-            'end'         => Carbon::parse($punch['end'])->timestamp,
-            'name'        => $punch['name'],
-            'description' => $punch['description'],
-            'tags'        =>
-                array_map(function($tag) {
-                    return $tag['name'];
-                }, $punch['tags'])
-        ];
-    }
 
 }
