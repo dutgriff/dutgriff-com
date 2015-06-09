@@ -7,7 +7,6 @@ abstract class Transformer {
      *
      * @param $items
      * @return array
-     * @internal param $punches
      */
     public function transformCollection($items)
     {

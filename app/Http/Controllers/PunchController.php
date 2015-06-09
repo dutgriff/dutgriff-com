@@ -9,7 +9,7 @@ use DutGRIFF\Punch;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Response;
 
-class PunchController extends Controller {
+class PunchController extends ApiController {
 
     /**
      * @var DutGRIFF\Transformers\PunchesTransformer
@@ -33,9 +33,9 @@ class PunchController extends Controller {
 	{
         $punches = Punch::with('tags')->get();
 
-		return Response::json([
+		return $this->respond([
            'data' => $this->punchesTransformer->transformCollection($punches->toArray())
-        ], 200);
+        ]);
 	}
 
 	/**
@@ -69,16 +69,12 @@ class PunchController extends Controller {
 		$punch = Punch::with('tags')->find($id);
 
         if(!$punch) {
-            return Response::json([
-                'error' => [
-                    'message' => "Punch doesn't exist"
-                ]
-            ], 404);
+            return $this->respondNotFound('Punch does not exist.');
         }
 
-        return Response::json([
+        return $this->respond([
            'data' => $this->punchesTransformer->transform($punch->toArray())
-        ], 200);
+        ]);
 	}
 
 	/**
