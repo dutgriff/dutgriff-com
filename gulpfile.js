@@ -24,6 +24,7 @@ elixir(function(mix) {
       'libs/jquery-2.1.4.min.js',
       'libs/bootstrap.min.js',
       'libs/vue.min.js',
+      'libs/vue-resource.min.js',
       'libs/select2.min.js',
       'libs/moment.js',
       'timepunch.js',

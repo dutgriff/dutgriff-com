@@ -13,7 +13,7 @@ class TimepunchController extends Controller {
 	 * @return Response
 	 */
 	public function index()
-	{
+    {
 		return view('timepunch');
 	}
 

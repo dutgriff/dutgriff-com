@@ -14,9 +14,15 @@
 Route::get('/', 'WelcomeController@index');
 Route::get('/timepunch', 'TimepunchController@index');
 
+Route::group(['prefix' => 'api/v1'], function ()
+{
+    Route::resource('/punch', 'PunchController');
+
+});
+
 Route::get('home', 'HomeController@index');
 
 Route::controllers([
-	'auth' => 'Auth\AuthController',
-	'password' => 'Auth\PasswordController',
+    'auth'     => 'Auth\AuthController',
+    'password' => 'Auth\PasswordController',
 ]);
