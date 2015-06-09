@@ -55,7 +55,7 @@ class ApiController extends Controller {
                 'message'     => $message,
                 'status_code' => $this->getStatusCode()
             ]
-        ]);
+        ], $this->getStatusCode());
     }
 
     /**

@@ -7,6 +7,7 @@ use DutGRIFF\Http\Controllers\Controller;
 
 use DutGRIFF\Punch;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Response;
 
 class PunchController extends ApiController {
@@ -21,6 +22,7 @@ class PunchController extends ApiController {
      */
     function __construct(PunchesTransformer $punchesTransformer)
     {
+        $this->middleware('auth', ['except' => ['index', 'show']]);
         $this->punchesTransformer = $punchesTransformer;
     }
 
@@ -39,23 +41,23 @@ class PunchController extends ApiController {
 	}
 
 	/**
-	 * Show the form for creating a new resource.
-	 *
-	 * @return Response
-	 */
-	public function create()
-	{
-		//
-	}
-
-	/**
 	 * Store a newly created resource in storage.
 	 *
 	 * @return Response
 	 */
 	public function store()
 	{
-		//
+		if( ! Input::get('start') || ! Input::get('name') || ! Input::get('description') )
+        {
+           return $this->setStatusCode(422)->respondWithError('Parameters failed validation.');
+        }
+
+        $punch = Punch::create(Input::all());
+        $punch = Punch::with('tags')->find($punch->id);
+
+        return $this->setStatusCode(201)->respond([
+           'data' => $this->punchesTransformer->transform($punch->toArray())
+        ]);
 	}
 
 	/**
@@ -75,17 +77,6 @@ class PunchController extends ApiController {
         return $this->respond([
            'data' => $this->punchesTransformer->transform($punch->toArray())
         ]);
-	}
-
-	/**
-	 * Show the form for editing the specified resource.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function edit($id)
-	{
-		//
 	}
 
 	/**
