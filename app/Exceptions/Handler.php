@@ -2,7 +2,9 @@
 
 use Exception;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
+use Illuminate\Session\TokenMismatchException;
 use Illuminate\Support\Facades\App;
+use Illuminate\Support\Facades\Response;
 
 class Handler extends ExceptionHandler {
 
@@ -39,7 +41,12 @@ class Handler extends ExceptionHandler {
 	{
         if($request->is('api/*'))
         {
-            return App::make('\DutGRIFF\Http\Controllers\ApiController')->respondInternalError('Uncaught api error occurred');
+            if($e instanceof TokenMismatchException)
+            {
+                return App::make('\DutGRIFF\Http\Controllers\ApiController')->respondInternalError('CSRF validation failed.');
+            }
+
+            return App::make('\DutGRIFF\Http\Controllers\ApiController')->respondInternalError('An uncaught api error occurred.');
         }
 
 		return parent::render($request, $e);

@@ -13,7 +13,7 @@ class Punch extends Model {
 
     public function tags()
     {
-        return $this->belongsToMany('DutGRIFF\PunchTag');
+        return $this->belongsToMany('DutGRIFF\PunchTag')->withTimestamps();
     }
 
 }

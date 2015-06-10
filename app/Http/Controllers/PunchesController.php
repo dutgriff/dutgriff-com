@@ -1,6 +1,7 @@
 <?php namespace DutGRIFF\Http\Controllers;
 
 use Carbon\Carbon;
+use DutGRIFF\PunchTag;
 use DutGRIFF\Transformers\PunchesTransformer;
 use DutGRIFF\Http\Requests;
 use DutGRIFF\Http\Controllers\Controller;
@@ -63,7 +64,17 @@ class PunchesController extends ApiController {
             return $this->respondFailedValidation();
         }
 
+        $tags = Input::get('tags');
+
+        if($tags && is_array($tags))
+        {
+            foreach($tags as $index => $tag) {
+                $tags[$index] = PunchTag::firstOrCreate(['name' => $tag])->id;
+            }
+        }
+
         $punch = Punch::create(Input::all());
+        $punch->tags()->attach($tags);
         $punch = Punch::with('tags')->find($punch->id);
 
         return $this->respondCreated($this->punchesTransformer->transform($punch->toArray()), 'Punch Created');

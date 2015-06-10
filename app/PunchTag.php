@@ -8,7 +8,7 @@ class PunchTag extends Model {
 
     public function punches()
     {
-        return $this->belongsToMany('DutGRIFF\Punch');
+        return $this->belongsToMany('DutGRIFF\Punch')->withTimestamps();
     }
 
 }
