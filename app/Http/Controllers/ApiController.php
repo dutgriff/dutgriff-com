@@ -1,6 +1,7 @@
 <?php namespace DutGRIFF\Http\Controllers;
 
 use DutGRIFF\Http\Controllers\Controller;
+use Illuminate\Http\Response as IlluminateResponse;
 use Illuminate\Support\Facades\Response;
 
 class ApiController extends Controller {
@@ -66,7 +67,18 @@ class ApiController extends Controller {
      */
     public function respondNotFound($message = "Not Found.")
     {
-       return $this->setStatusCode(404)->respondWithError($message);
+       return $this->setStatusCode(IlluminateResponse::HTTP_NOT_FOUND)->respondWithError($message);
+    }
+
+    /**
+     * Return a Failed Validation Error
+     *
+     * @param string $message
+     * @return mixed
+     */
+    public function respondFailedValidation($message = "Parameter validation failed.")
+    {
+        return $this->setStatusCode(IlluminateResponse::HTTP_UNPROCESSABLE_ENTITY)->respondWithError($message);
     }
 
     /**
@@ -77,7 +89,24 @@ class ApiController extends Controller {
      */
     public function respondInternalError($message = "Oops. Internal Error.")
     {
-        return $this->setStatusCode(500)->respondWithError($message);
+        return $this->setStatusCode(IlluminateResponse::HTTP_INTERNAL_SERVER_ERROR)->respondWithError($message);
+    }
+
+    /**
+     * Return created item
+     *
+     * @param $message
+     * @param $objectData
+     * @return mixed
+     */
+    public function respondCreated($message, $objectData)
+    {
+        return $this->setStatusCode(IlluminateResponse::HTTP_CREATED)->respond([
+            'data' => [
+                'item'   => $objectData,
+                'message' => $message
+            ]
+        ]);
     }
 
 }

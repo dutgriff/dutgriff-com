@@ -49,16 +49,15 @@ class PunchController extends ApiController {
 	{
 		if( ! Input::get('start') || ! Input::get('name') || ! Input::get('description') )
         {
-           return $this->setStatusCode(422)->respondWithError('Parameters failed validation.');
+           return $this->respondFailedValidation();
         }
 
         $punch = Punch::create(Input::all());
         $punch = Punch::with('tags')->find($punch->id);
 
-        return $this->setStatusCode(201)->respond([
-           'data' => $this->punchesTransformer->transform($punch->toArray())
-        ]);
-	}
+        return $this->respondCreated('Punch Created', $this->punchesTransformer->transform($punch->toArray()));
+
+    }
 
 	/**
 	 * Display the specified resource.
@@ -71,7 +70,7 @@ class PunchController extends ApiController {
 		$punch = Punch::with('tags')->find($id);
 
         if(!$punch) {
-            return $this->respondNotFound('Punch does not exist.');
+            return $this->respondNotFound('Punch was not found.');
         }
 
         return $this->respond([
