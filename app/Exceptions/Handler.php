@@ -2,6 +2,7 @@
 
 use Exception;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
+use Illuminate\Support\Facades\App;
 
 class Handler extends ExceptionHandler {
 
@@ -36,6 +37,11 @@ class Handler extends ExceptionHandler {
 	 */
 	public function render($request, Exception $e)
 	{
+        if($request->is('api/*'))
+        {
+            return App::make('\DutGRIFF\Http\Controllers\ApiController')->respondInternalError('Uncaught api error occurred');
+        }
+
 		return parent::render($request, $e);
 	}
 
