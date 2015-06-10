@@ -16,7 +16,8 @@ Route::get('/timepunch', 'TimepunchController@index');
 
 Route::group(['prefix' => 'api/v1'], function ()
 {
-    Route::resource('/punch', 'PunchController', ['except' => ['edit', 'create']]);
+    Route::resource('/punch', 'PunchesController', ['except' => ['edit', 'create']]);
+    Route::resource('/punchtags', 'PunchTagsController', ['except' => ['edit', 'create']]);
 
 });
 

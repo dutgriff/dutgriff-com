@@ -99,13 +99,13 @@ class ApiController extends Controller {
      * @param $objectData
      * @return mixed
      */
-    public function respondCreated($message, $objectData)
+    public function respondCreated($objectData, $message = "Create Successful.")
     {
         return $this->setStatusCode(IlluminateResponse::HTTP_CREATED)->respond([
             'data' => [
-                'item'   => $objectData,
-                'message' => $message
-            ]
+                'item'   => $objectData
+            ],
+            'message' => $message
         ]);
     }
 
