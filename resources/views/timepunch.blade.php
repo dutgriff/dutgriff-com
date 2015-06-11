@@ -16,11 +16,11 @@
       </thead>
       <tbody>
         <tr v-repeat="punch: punches">
-          <td>@{{ punch.start | getTime }}</td>
-          <td>@{{ punch.end | getTime }}</td>
+          <td>@{{ punch.start | formatTime }}</td>
+          <td>@{{ punch.end | formatTime }}</td>
           <td>@{{ punch.name }}</td>
           <td>@{{ punch.description }}</td>
-          <td>@{{ punch.tags }}</td>
+          <td>@{{ punch.tags | toTagNames }}</td>
         </tr>
         <tr>
           <td id="start-time" form="new-punch" class="form-group">
@@ -60,7 +60,7 @@
       </tbody>
     </table>
     <form id="new-punch" class="form-inline" v-on="submit: addPunch">
-      <button type="submit" class="btn btn-default pull-right">Punch</button>
+      <button type="submit" class="btn btn-default pull-right" v-attr="disabled: errors">Punch</button>
     </form>
 
     <pre style="clear:both; font-size:12px">@{{ $data | json }}</pre>

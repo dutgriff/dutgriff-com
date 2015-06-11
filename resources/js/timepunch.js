@@ -1,4 +1,6 @@
-new Vue({
+Vue.http.headers.common['X-CSRF-TOKEN'] = $('#csrf-token').attr('value');
+
+var timepunchToday = new Vue({
   el: '#timepunch',
 
   data: {
@@ -7,9 +9,21 @@ new Vue({
     newPunch: {start: '', end: '', name: '', description: '', tags: ''}
   },
 
+  computed: {
+    startUtc: function() {
+      return moment(this.newPunch.start, 'HH:mm').format('X');
+    },
+    endUtc: function() {
+      return moment(this.newPunch.end, 'HH:mm').format('X');
+    },
+    errors: function() {
+      return this.startUtc == "Invalid date" || this.endUtc == "Invalid date" || ! this.newPunch.name
+    }
+  },
+
   ready: function () {
-    this.fetchPunches();
     this.fetchTags();
+    this.fetchPunches();
   },
 
   methods: {
@@ -26,36 +40,44 @@ new Vue({
     addPunch: function (e) {
       e.preventDefault();
 
-      var start = moment(this.newPunch.start, 'HH:mm').format('X');
-      if (start == "Invalid date") {
-        alert('Start Time must be a valid time format. (e.g HH:mm)');
-        $('#start').focus();
-        return;
-      }
-      this.newPunch.start = start;
-      var end = moment(this.newPunch.end, 'HH:mm').format('X');
-      if (end == "Invalid date") {
-        alert('End Time must be a valid time format. (e.g HH:mm)');
-        $('#end').focus();
-        return;
-      }
-      this.newPunch.end = end;
+      this.newPunch.start = this.startUtc;
+      this.newPunch.end = this.endUtc;
 
-      this.newPunch.tags = $("#tags").select2("val");
-      this.tags = this.tags.concat(this.newPunch.tags);
-      this.punches.push(Vue.util.extend({}, this.newPunch));
+      //var tagsElement = $("#tags");
+      //this.newPunch.tags = tagsElement.select2("val");
+      //this.tags = this.tags.concat(this.newPunch.tags);
+      //this.punches.push(Vue.util.extend({}, this.newPunch));
+
+      var punch = Vue.util.extend({}, this.newPunch);
+
+      this.createPunch(punch);
 
       this.newPunch = {start: '', end: '', name: '', description: '', tags: ''};
-      $("#tags").val('').change();
+      //tagsElement.val('').change();
+    },
+    createPunch: function(punch) {
+      this.$http.post('api/v1/punch', punch, function(response){
+        this.punches.push(response.data.item);
+      });
     }
   },
   filters: {
-    getTime: function (unixTimestamp) {
+    formatTime: function (unixTimestamp) {
       return moment(unixTimestamp, 'X').format('HH:mm');
+    },
+    toTagNames: function (ids) {
+      var arr = [];
+      var that = this;
+      ids.forEach(function(id) {
+        that.tags.forEach(function (tag) {
+          if (tag.id === id) arr.push(tag.name);
+        });
+      });
+      return arr;
     }
   }
 });
 
-$("#tags").select2({
-  tags: true
-});
+//$("#tags").select2({
+//  tags: true
+//});
