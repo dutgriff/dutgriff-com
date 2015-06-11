@@ -59,7 +59,7 @@ class PunchesController extends ApiController {
      */
     public function store()
     {
-        if ( ! Input::get('start') || ! Input::get('name') || ! Input::get('description'))
+        if ( ! Input::get('start') || ! Input::get('name'))
         {
             return $this->respondFailedValidation();
         }
