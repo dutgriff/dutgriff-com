@@ -66,6 +66,7 @@ class PunchesController extends ApiController {
 
         $tags = Input::get('tags');
 
+        $punch = Punch::create(Input::all());
         if($tags)
         {
             if (is_array($tags))
@@ -79,18 +80,17 @@ class PunchesController extends ApiController {
                     }
                     $tags[$index] = $tag->id;
                 }
+                $punch->tags()->attach($tags);
             } else {
                 $tag = PunchTag::find($tags);
                 if ( ! $tags)
                 {
                     return $this->respondNotFound('Punch Tag was not found.');
                 }
-                $tags = $tag->id;
+                $punch->tags()->attach($tag->id);
             }
         }
 
-        $punch = Punch::create(Input::all());
-        $punch->tags()->attach($tags);
         $punch = Punch::with('tags')->find($punch->id);
 
         return $this->respondCreated($this->punchesTransformer->transform($punch->toArray()), 'Punch Created');
