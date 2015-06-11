@@ -66,10 +66,26 @@ class PunchesController extends ApiController {
 
         $tags = Input::get('tags');
 
-        if($tags && is_array($tags))
+        if($tags)
         {
-            foreach($tags as $index => $tag) {
-                $tags[$index] = PunchTag::firstOrCreate(['name' => $tag])->id;
+            if (is_array($tags))
+            {
+                foreach ($tags as $index => $tag)
+                {
+                    $tag = PunchTag::find($tag);
+                    if ( ! $tag)
+                    {
+                        return $this->respondNotFound('Punch Tag was not found.');
+                    }
+                    $tags[$index] = $tag->id;
+                }
+            } else {
+                $tag = PunchTag::find($tags);
+                if ( ! $tags)
+                {
+                    return $this->respondNotFound('Punch Tag was not found.');
+                }
+                $tags = $tag->id;
             }
         }
 
