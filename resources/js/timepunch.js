@@ -35,6 +35,14 @@ var timepunchToday = new Vue({
     fetchTags: function () {
       this.$http.get('/api/v1/punchtags', function(response) {
         this.$set('tags', response.data);
+
+        var that = this;
+
+        $("#tags").select2({
+          tags: true
+        }).on('change', function() {
+          that.newPunch.tags = $("#tags").select2('val');
+        });
       });
     },
     addPunch: function (e) {
@@ -43,17 +51,12 @@ var timepunchToday = new Vue({
       this.newPunch.start = this.startUtc;
       this.newPunch.end = this.endUtc;
 
-      //var tagsElement = $("#tags");
-      //this.newPunch.tags = tagsElement.select2("val");
-      //this.tags = this.tags.concat(this.newPunch.tags);
-      //this.punches.push(Vue.util.extend({}, this.newPunch));
-
       var punch = Vue.util.extend({}, this.newPunch);
 
       this.createPunch(punch);
 
       this.newPunch = {start: '', end: '', name: '', description: '', tags: ''};
-      //tagsElement.val('').change();
+      $("#tags").select2().val('').change();
     },
     createPunch: function(punch) {
       this.$http.post('api/v1/punch', punch, function(response){
@@ -77,7 +80,3 @@ var timepunchToday = new Vue({
     }
   }
 });
-
-//$("#tags").select2({
-//  tags: true
-//});
