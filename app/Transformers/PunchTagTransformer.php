@@ -7,7 +7,8 @@ class PunchTagTransformer  extends Transformer {
     public function transform($punchTag)
     {
         return [
-            'name' => $punchTag['name'],
+            'id'   => (int) $punchTag['id'],
+            'name' => $punchTag['name']
         ];
     }
 

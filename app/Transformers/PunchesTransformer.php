@@ -8,13 +8,14 @@ class PunchesTransformer extends Transformer {
     public function transform($punch)
     {
         return [
+            'id'          => (int) $punch['id'],
             'start'       => Carbon::parse($punch['start'])->timestamp,
             'end'         => Carbon::parse($punch['end'])->timestamp,
             'name'        => $punch['name'],
             'description' => $punch['description'],
             'tags'        =>
                 array_map(function($tag) {
-                    return $tag['name'];
+                    return (int) $tag['id'];
                 }, $punch['tags'])
         ];
     }

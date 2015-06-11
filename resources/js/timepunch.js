@@ -2,39 +2,39 @@ new Vue({
   el: '#timepunch',
 
   data: {
-    punches: [
-      {
-        start: '1433783700',
-        end: '1433787300',
-        name: 'Whatch Vue.js Laracast',
-        description: 'Watched the Laracast series on Vue.js',
-        tags: ['Learning', 'Vue.js', 'Laracast', 'PHP']
-      },
-      {
-        start: '1433787300',
-        end: '1433788200',
-        name: "Rubik's Cube",
-        description: "Play with my Rubik's Cube",
-        tags: ['Logic', 'Puzzle', "Rubik's Cube"]
-      }
-    ],
-    tags: ['Learning', 'Vue.js', 'Laracast', 'PHP', 'Logic', 'Puzzle', "Rubik's Cube", "Testing"],
+    punches: [],
+    tags: [],
     newPunch: {start: '', end: '', name: '', description: '', tags: ''}
   },
 
+  ready: function () {
+    this.fetchPunches();
+    this.fetchTags();
+  },
+
   methods: {
+    fetchPunches: function () {
+      this.$http.get('/api/v1/punch', function (response) {
+        this.$set('punches', response.data);
+      });
+    },
+    fetchTags: function () {
+      this.$http.get('/api/v1/punchtags', function(response) {
+        this.$set('tags', response.data);
+      });
+    },
     addPunch: function (e) {
       e.preventDefault();
 
       var start = moment(this.newPunch.start, 'HH:mm').format('X');
-      if(start == "Invalid date") {
+      if (start == "Invalid date") {
         alert('Start Time must be a valid time format. (e.g HH:mm)');
         $('#start').focus();
         return;
       }
       this.newPunch.start = start;
       var end = moment(this.newPunch.end, 'HH:mm').format('X');
-      if(end == "Invalid date") {
+      if (end == "Invalid date") {
         alert('End Time must be a valid time format. (e.g HH:mm)');
         $('#end').focus();
         return;
@@ -50,7 +50,7 @@ new Vue({
     }
   },
   filters: {
-    getTime: function(unixTimestamp) {
+    getTime: function (unixTimestamp) {
       return moment(unixTimestamp, 'X').format('HH:mm');
     }
   }

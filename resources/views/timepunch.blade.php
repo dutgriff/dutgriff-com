@@ -53,7 +53,7 @@
           <td form="new-punch" class="form-group">
             <label class="sr-only" for="tags">Tags</label>
             <select class="form-control" multiple id="tags" v-model="newPunch.tags">
-              <option v-repeat="tag: tags">@{{ tag }}</option>
+              <option v-repeat="tag: tags" value="@{{ tag.id }}">@{{ tag.name }}</option>
             </select>
           </td>
         </tr>
