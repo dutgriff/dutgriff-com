@@ -37,11 +37,13 @@ var timepunchToday = new Vue({
         this.$set('tags', response.data);
 
         var that = this;
-
-        $("#tags").select2({
-          tags: true
-        }).on('change', function() {
-          that.newPunch.tags = $("#tags").select2('val');
+        Vue.nextTick(function() {
+          $("#tags").select2({
+            tags: true,
+            placeholder: 'Tags'
+          }).on('change', function () {
+            that.newPunch.tags = $("#tags").select2('val');
+          });
         });
       });
     },
@@ -56,7 +58,7 @@ var timepunchToday = new Vue({
       this.createPunch(punch);
 
       this.newPunch = {start: '', end: '', name: '', description: '', tags: ''};
-      $("#tags").select2().val('').change();
+      $("#tags").select2('val', '');
     },
     createPunch: function(punch) {
       this.$http.post('api/v1/punch', punch, function(response){
