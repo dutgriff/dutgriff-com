@@ -49,11 +49,12 @@ var timepunchToday = new Vue({
       });
     },
     addSelect2: function() {
+      var that = this;
       $("#tags").select2({
         tags: true,
         placeholder: 'Tags'
       }).on('change', function () {
-        this.newPunch.tags = $("#tags").select2('val');
+        that.newPunch.tags = $("#tags").select2('val');
       });
     },
     addPunch: function (e) {
