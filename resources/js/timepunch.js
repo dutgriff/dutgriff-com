@@ -6,9 +6,8 @@ var timepunchToday = new Vue({
   data: {
     punches: [],
     tags: [],
-    newPunch: {start: '', end: '', name: '', description: '', tags: ''},
-    waitingToLoad: {fetchTags: false, fetchPunches: false}
-},
+    newPunch: {start: '', end: '', name: '', description: '', tags: ''}
+  },
 
   computed: {
     startUtc: function() {
@@ -23,38 +22,29 @@ var timepunchToday = new Vue({
   },
 
   ready: function () {
-    var that = this;
-    this.fetchTags(function(){that.waitingToLoad.fetchTags = true});
-    this.fetchPunches(function(){that.waitingToLoad.fetchPunches = true});
-    this.$watch('waitingToLoad.fetchTags && waitingToLoad.fetchPunches', function() {
-      $.each(this.waitingToLoad, function(index, value) {
-        if(! value)
-          return 0;
-      })
-      this.addSelect2();
-    });
+    this.fetchTags();
+    this.fetchPunches();
   },
 
   methods: {
-    fetchPunches: function (callback) {
+    fetchPunches: function () {
       this.$http.get('/api/v1/punch', function (response) {
         this.$set('punches', response.data);
-        if (typeof(callback) === "function") callback();
       });
     },
-    fetchTags: function (callback) {
+    fetchTags: function () {
       this.$http.get('/api/v1/punchtags', function(response) {
         this.$set('tags', response.data);
-        if (typeof(callback) === "function") callback();
-      });
-    },
-    addSelect2: function() {
-      var that = this;
-      $("#tags").select2({
-        tags: true,
-        placeholder: 'Tags'
-      }).on('change', function () {
-        that.newPunch.tags = $("#tags").select2('val');
+
+        var that = this;
+        Vue.nextTick(function() {
+          $("#tags").select2({
+            tags: true,
+            placeholder: 'Tags'
+          }).on('change', function () {
+            that.newPunch.tags = $("#tags").select2('val');
+          });
+        });
       });
     },
     addPunch: function (e) {
