@@ -27,6 +27,7 @@ elixir(function(mix) {
       'libs/vue-resource.min.js',
       'libs/select2.min.js',
       'libs/moment.js',
+      'libs/moment-timezone-with-data-2010-2020.min.js',
       'timepunch.js',
       'built/app.js'
     ], 'public/js', 'resources/js');

@@ -15,7 +15,7 @@
         </tr>
       </thead>
       <tbody>
-        <tr v-repeat="punch: punches">
+        <tr v-repeat="punch: punches | orderBy 'start'">
           <td>@{{ punch.start | formatTime }}</td>
           <td>@{{ punch.end | formatTime }}</td>
           <td>@{{ punch.name }}</td>

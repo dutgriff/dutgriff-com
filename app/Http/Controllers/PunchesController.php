@@ -43,9 +43,9 @@ class PunchesController extends ApiController {
         }
 
         $punches = Punch::with('tags')->whereBetween('start', [
-            Carbon::parse($date)->startOfDay(),
-            Carbon::parse($date)->endOfDay()
-        ])->get();
+            Carbon::parse($date, 'America/Chicago')->startOfDay()->timezone('UTC'),
+            Carbon::parse($date, 'America/Chicago')->endOfDay()->timezone('UTC')
+        ])->orderBy('start')->get();
 
         return $this->respond([
             'data' => $this->punchesTransformer->transformCollection($punches->toArray())

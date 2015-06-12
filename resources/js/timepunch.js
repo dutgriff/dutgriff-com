@@ -11,10 +11,10 @@ var timepunchToday = new Vue({
 
   computed: {
     startUtc: function() {
-      return moment(this.newPunch.start, 'HH:mm').format('X');
+      return moment(this.newPunch.start, 'HH:mm').tz('America/Chicago').format('X');
     },
     endUtc: function() {
-      return moment(this.newPunch.end, 'HH:mm').format('X');
+      return moment(this.newPunch.end, 'HH:mm').tz('America/Chicago').format('X');
     },
     errors: function() {
       return this.startUtc == "Invalid date" || this.endUtc == "Invalid date" || ! this.newPunch.name
@@ -68,7 +68,7 @@ var timepunchToday = new Vue({
   },
   filters: {
     formatTime: function (unixTimestamp) {
-      return moment(unixTimestamp, 'X').format('HH:mm');
+      return moment(unixTimestamp, 'X').tz('America/Chicago').format('HH:mm');
     },
     toTagNames: function (ids) {
       var arr = [];
