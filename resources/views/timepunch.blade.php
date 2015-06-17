@@ -22,45 +22,55 @@
           <td>@{{ punch.description }}</td>
           <td>@{{ punch.tags | toTagNames }}</td>
         </tr>
-        <tr>
-          <td id="start-time" form="new-punch" class="form-group">
-            <label class="sr-only" for="start">Start Time</label>
-            <input
-                type="text"
-                class="form-control"
-                id="start"
-                placeholder="Start Time"
-                v-model="newPunch.start"/>
-          </td>
-          <td id="end-time" form="new-punch" class="form-group">
-            <label class="sr-only" for="end">End Time</label>
-            <input
-                type='text'
-                class="form-control"
-                id="end"
-                placeholder="End Time"
-                v-model="newPunch.end"/>
-          </td>
-          <td form="new-punch" class="form-group">
-            <label class="sr-only" for="name">Name</label>
-            <input type="text" class="form-control" id="name" placeholder="Name" v-model="newPunch.name"/>
-          </td>
-          <td form="new-punch" class="form-group">
-            <label class="sr-only" for="description">Description</label>
-            <input type="text" class="form-control" id="description" placeholder="Description"
-                   v-model="newPunch.description"/>
-          </td>
-          <td form="new-punch" class="form-group">
-            <label class="sr-only" for="tags">Tags</label>
-            <select class="form-control" multiple id="tags" v-model="newPunch.tags">
-              <option v-repeat="tag: tags" value="@{{ tag.id }}">@{{ tag.name }}</option>
-            </select>
-          </td>
-        </tr>
       </tbody>
     </table>
-    <form id="new-punch" class="form-inline" v-on="submit: addPunch">
-      <button type="submit" class="btn btn-default pull-right" v-attr="disabled: errors">Punch</button>
+    <form class="col-md-10 col-md-offset-1">
+      <div class="col-md-4">
+        <div class="form-group">
+          <label for="start">Start Time</label>
+          <input
+              type="text"
+              class="form-control"
+              id="start"
+              placeholder="HH:mm"
+              v-model="newPunch.start"/>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="form-group">
+          <label for="end">End Time</label>
+          <input
+              type='text'
+              class="form-control"
+              id="end"
+              placeholder="HH:mm"
+              v-model="newPunch.end"/>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="form-group">
+          <label for="name">Name</label>
+          <input type="text" class="form-control" id="name" placeholder="Name" v-model="newPunch.name"/>
+        </div>
+      </div>
+      <div class="col-md-8">
+        <div class="form-group">
+          <label for="description">Description</label>
+          <input type="text" class="form-control" id="description" placeholder="Description"
+                 v-model="newPunch.description"/>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="form-group">
+          <label for="tags">Tags</label>
+          <select class="form-control" multiple id="tags" v-model="newPunch.tags">
+            <option v-repeat="tag: tags" value="@{{ tag.id }}">@{{ tag.name }}</option>
+          </select>
+        </div>
+      </div>
+      <div class="col-md-12">
+        <button type="submit" class="btn btn-default pull-right" v-attr="disabled: errors" v-on="click: addPunch">Create Punch</button>
+      </div>
     </form>
 
     <pre style="clear:both; font-size:12px">@{{ $data | json }}</pre>

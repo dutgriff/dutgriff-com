@@ -17,7 +17,7 @@ var timepunchToday = new Vue({
       return moment(this.newPunch.end, 'HH:mm').tz('America/Chicago').format('X');
     },
     errors: function() {
-      return this.startUtc == "Invalid date" || this.endUtc == "Invalid date" || ! this.newPunch.name
+      return this.startUtc == "Invalid date" || this.endUtc == "Invalid date" || ! this.newPunch.name;
     }
   },
 
@@ -35,16 +35,6 @@ var timepunchToday = new Vue({
     fetchTags: function () {
       this.$http.get('/api/v1/punchtags', function(response) {
         this.$set('tags', response.data);
-
-        var that = this;
-        Vue.nextTick(function() {
-          $("#tags").select2({
-            tags: true,
-            placeholder: 'Tags'
-          }).on('change', function () {
-            that.newPunch.tags = $("#tags").select2('val');
-          });
-        });
       });
     },
     addPunch: function (e) {
@@ -58,7 +48,6 @@ var timepunchToday = new Vue({
       this.createPunch(punch);
 
       this.newPunch = {start: '', end: '', name: '', description: '', tags: ''};
-      $("#tags").select2('val', '');
     },
     createPunch: function(punch) {
       this.$http.post('api/v1/punch', punch, function(response){
