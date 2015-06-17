@@ -6,7 +6,9 @@ var timepunchToday = new Vue({
   data: {
     punches: [],
     tags: [],
-    newPunch: {start: '', end: '', name: '', description: '', tags: ''}
+    newPunch: {start: '', end: '', name: '', description: '', tags: ''},
+    creatingTag: false,
+    newTag: ''
   },
 
   computed: {
@@ -48,10 +50,20 @@ var timepunchToday = new Vue({
       this.createPunch(punch);
 
       this.newPunch = {start: '', end: '', name: '', description: '', tags: ''};
+      this.creatingTag = false;
+      this.newTag = '';
     },
     createPunch: function(punch) {
       this.$http.post('api/v1/punch', punch, function(response){
         this.punches.push(response.data.item);
+      });
+    },
+    createTag: function() {
+      this.$http.post('api/v1/punchtags', { name: this.newTag }, function(response) {
+        this.tags.push(response.data.item);
+        this.creatingTag = false;
+        this.newTag = '';
+        this.newPunch.tags.push(response.data.item.id);
       });
     }
   },

@@ -24,7 +24,7 @@
         </tr>
       </tbody>
     </table>
-    <form class="col-md-10 col-md-offset-1">
+    <form class="col-md-10 col-md-offset-1 col-lg-8 col-lg-offset-2">
       <div class="col-md-4">
         <div class="form-group">
           <label for="start">Start Time</label>
@@ -63,9 +63,22 @@
       <div class="col-md-4">
         <div class="form-group">
           <label for="tags">Tags</label>
-          <select class="form-control" multiple id="tags" v-model="newPunch.tags">
+          <a class="pull-right" v-class="hidden: creatingTag" v-on="click: creatingTag = true">new tag</a>
+          <span class="pull-right" v-class="hidden: ! creatingTag">
+            <a v-on="click: createTag()">create</a>
+            |
+            <a v-on="click: creatingTag = false">cancel</a>
+          </span>
+          <select class="form-control" multiple id="tags" v-model="newPunch.tags" v-class="hidden: creatingTag">
             <option v-repeat="tag: tags" value="@{{ tag.id }}">@{{ tag.name }}</option>
           </select>
+          <input
+              type="text"
+              class="form-control"
+              id="newTagName"
+              v-class="hidden: ! creatingTag"
+              placeholder="Tag name"
+              v-model="newTag" />
         </div>
       </div>
       <div class="col-md-12">
