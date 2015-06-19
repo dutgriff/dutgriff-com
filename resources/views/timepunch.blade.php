@@ -4,7 +4,10 @@
   <div id="timepunch">
     <h1>Time Punch</h1>
 
-    <table class="table table-striped">
+    <div v-class="hidden: punches.length" class="well">
+      <h3 class="text-center">There are currently no punches for today. Start throwing punches!</h3>
+    </div>
+    <table class="table table-striped" v-class="hidden: ! punches.length">
       <thead>
         <tr>
           <th>Start Time</th>
@@ -20,11 +23,15 @@
           <td>@{{ punch.end | formatTime }}</td>
           <td>@{{ punch.name }}</td>
           <td>@{{ punch.description }}</td>
-          <td>@{{ punch.tags | toTagNames }}</td>
+          <td>
+            <ul class="list-inline tag-list">
+              <li v-repeat="tag:punch.tags">@{{ tag | toTagName }}</li>
+            </ul>
+          </td>
         </tr>
       </tbody>
     </table>
-    <form class="col-md-10 col-md-offset-1 col-lg-8 col-lg-offset-2">
+    <form class="col-md-10 col-md-offset-1 col-lg-6 col-lg-offset-3 well">
       <div class="col-md-4">
         <div class="form-group">
           <label for="start">Start Time</label>
@@ -53,36 +60,45 @@
           <input type="text" class="form-control" id="name" placeholder="Name" v-model="newPunch.name"/>
         </div>
       </div>
-      <div class="col-md-8">
+      <div class="col-md-12">
         <div class="form-group">
           <label for="description">Description</label>
           <input type="text" class="form-control" id="description" placeholder="Description"
                  v-model="newPunch.description"/>
         </div>
       </div>
-      <div class="col-md-4">
-        <div class="form-group">
-          <label for="tags">Tags</label>
-          <a class="pull-right" v-class="hidden: creatingTag" v-on="click: creatingTag = true">new tag</a>
-          <span class="pull-right" v-class="hidden: ! creatingTag">
-            <a v-on="click: createTag()">create</a>
-            |
-            <a v-on="click: creatingTag = false">cancel</a>
-          </span>
-          <select class="form-control" multiple id="tags" v-model="newPunch.tags" v-class="hidden: creatingTag">
-            <option v-repeat="tag: tags" value="@{{ tag.id }}">@{{ tag.name }}</option>
-          </select>
-          <input
-              type="text"
-              class="form-control"
-              id="newTagName"
-              v-class="hidden: ! creatingTag"
-              placeholder="Tag name"
-              v-model="newTag" />
+      <div class="col-md-12">
+        <label for="tags">Tags</label>
+        <div class="row">
+          <div class="col-md-4">
+            <div class="form-group has-feedback">
+              <input
+                  type="text"
+                  class="form-control"
+                  id="tag"
+                  v-model="tagInput"
+                  v-on="keyup:doSomething | key 'enter'"
+                  placeholder="Tag name" />
+              <span
+                  class="glyphicon glyphicon-plus form-control-feedback text-success"
+                  v-on="click: addTag(this.tagInput)"
+                  style="pointer-events: auto;">
+              </span>
+            </div>
+          </div>
+          <div class="col-md-8">
+            <button
+                v-repeat="tag:newPunch.tags"
+                class="btn btn-default"
+                v-on="click: removeTag(tag)">
+              <span class="glyphicon glyphicon-remove text-danger"></span>
+              @{{ tag | toTagName }}
+              </button>
+          </div>
         </div>
       </div>
       <div class="col-md-12">
-        <button type="submit" class="btn btn-default pull-right" v-attr="disabled: errors" v-on="click: addPunch">Create Punch</button>
+        <button type="submit" class="btn btn-default pull-right" v-attr="disabled: errors" v-on="click: createPunch">Create Punch</button>
       </div>
     </form>
 
