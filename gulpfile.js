@@ -14,10 +14,10 @@ var elixir = require('laravel-elixir');
 
 elixir(function(mix) {
 
-  mix.less('*.less', 'resources/css/built')
+  mix
+    .less('*.less', 'resources/css/built')
     .styles([
       'built/app.css',
-      'libs/select2.min.css',
     ], 'public/css', 'resources/css')
     .coffee('*.coffee', 'resources/js/built')
     .scripts([
