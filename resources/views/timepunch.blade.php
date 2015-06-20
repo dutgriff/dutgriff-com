@@ -2,7 +2,7 @@
 
 @section('content')
   <div id="timepunch">
-    <h1>Time Punch</h1>
+    <h1>Time Punch <span class="h3">(Demo)</span></h1>
 
     <div v-class="hidden: punches.length" class="well">
       <h3 class="text-center">There are currently no punches for today. Start throwing punches!</h3>
@@ -32,6 +32,11 @@
       </tbody>
     </table>
     <form class="col-md-10 col-md-offset-1 col-lg-6 col-lg-offset-3 well">
+      @if( ! Auth::check())
+        <div class="overlay">
+          <span class="h2 overlay-message">You must be logged in to create a punch.</span>
+        </div>
+      @endif
       <div class="col-md-4">
         <div class="form-group">
           <label for="start">Start Time</label>
