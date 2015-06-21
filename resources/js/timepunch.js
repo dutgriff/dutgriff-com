@@ -68,10 +68,15 @@ var timepunchToday = new Vue({
       this.newPunch.start = this.startUtc;
       this.newPunch.end = this.endUtc;
 
+      if(this.newPunch.end === '')
+        delete this.newPunch.end;
+
       var punch = Vue.util.extend({}, this.newPunch);
 
       this.$http.post('api/v1/punch', punch, function(response){
         this.punches.push(response.data.item);
+      }).error(function(response, status, request){
+        console.log(response); // display these errors
       });
 
       this.newPunch = {start: '', end: '', name: '', description: '', tags: []};
@@ -81,6 +86,8 @@ var timepunchToday = new Vue({
       this.$http.post('api/v1/punchtags', { name: tagName }, function(response) {
         this.tags.push(response.data.item);
         this.newPunch.tags.push(response.data.item.id);
+      }).error(function(response, status, request){
+        console.log(response); // display these errors
       });
       this.tagInput = '';
     },
