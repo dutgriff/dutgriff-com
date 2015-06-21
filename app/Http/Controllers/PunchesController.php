@@ -95,7 +95,7 @@ class PunchesController extends ApiController {
             }
         }
 
-        $punch = $punch->with('tags')->first();
+        $punch = $punch->fresh(['tags']);
 
         return $this->respondCreated($this->punchesTransformer->transform($punch->toArray()), 'Punch Created');
     }
