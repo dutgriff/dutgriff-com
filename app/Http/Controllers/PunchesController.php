@@ -64,9 +64,13 @@ class PunchesController extends ApiController {
             return $this->respondFailedValidation();
         }
 
+        $input = Input::all();
+
+        if($input['end'] === '') unset($input['end']);
+
         $tags = Input::get('tags');
 
-        $punch = Punch::create(Input::all());
+        $punch = Punch::create($input);
         if($tags)
         {
             if (is_array($tags))

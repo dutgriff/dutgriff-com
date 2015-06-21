@@ -16,7 +16,7 @@ class CreatePunchesTable extends Migration {
 		{
 			$table->increments('id');
             $table->timestamp('start');
-            $table->timestamp('end');
+            $table->timestamp('end')->nullable();
             $table->string('name');
             $table->text('description');
 			$table->timestamps();
