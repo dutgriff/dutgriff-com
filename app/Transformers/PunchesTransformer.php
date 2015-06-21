@@ -20,12 +20,12 @@ class PunchesTransformer extends Transformer {
         ];
     }
 
-    private function getTimestampFromCarbon($carbon) {
-        if(is_null($carbon))
+    private function getTimestampFromCarbon($date) {
+        if(is_null($date))
         {
             return null;
         } else {
-            return Carbon::parse()->timestamp;
+            return Carbon::parse($date)->timestamp;
         }
     }
 }
