@@ -92,7 +92,10 @@ var timepunchToday = new Vue({
   },
   filters: {
     formatTime: function (unixTimestamp) {
-      return moment(unixTimestamp, 'X').tz('America/Chicago').format('HH:mm');
+      if(unixTimestamp === null)
+        return ''
+      else
+        return moment(unixTimestamp, 'X').tz('America/Chicago').format('HH:mm');
     },
     toTagName: function (id) {
       var name = 'unknown tag';

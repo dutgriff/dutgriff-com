@@ -9,8 +9,8 @@ class PunchesTransformer extends Transformer {
     {
         return [
             'id'          => (int) $punch['id'],
-            'start'       => Carbon::parse($punch['start'])->timestamp,
-            'end'         => Carbon::parse($punch['end'])->timestamp,
+            'start'       => $this->getTimestampFromCarbon($punch['start']),
+            'end'         => $this->getTimestampFromCarbon($punch['end']),
             'name'        => $punch['name'],
             'description' => $punch['description'],
             'tags'        =>
@@ -18,5 +18,14 @@ class PunchesTransformer extends Transformer {
                     return (int) $tag['id'];
                 }, $punch['tags'])
         ];
+    }
+
+    private function getTimestampFromCarbon($carbon) {
+        if(is_null($carbon))
+        {
+            return null;
+        } else {
+            return Carbon::parse()->timestamp;
+        }
     }
 }
