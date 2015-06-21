@@ -1,6 +1,7 @@
 <?php namespace DutGRIFF\Http\Controllers;
 
 use Carbon\Carbon;
+use DutGRIFF\Http\Requests\StorePunchRequest;
 use DutGRIFF\PunchTag;
 use DutGRIFF\Transformers\PunchesTransformer;
 use DutGRIFF\Http\Requests;
@@ -55,44 +56,28 @@ class PunchesController extends ApiController {
     /**
      * Store a newly created resource in storage.
      *
+     * @param StorePunchRequest $request
      * @return Response
      */
-    public function store()
+    public function store(StorePunchRequest $request)
     {
-        if ( ! Input::get('start') || ! Input::get('name'))
-        {
-            return $this->respondFailedValidation();
-        }
-
-        $input = Input::all();
-
-        if($input['end'] === '') unset($input['end']);
+        $input = $request->input();
 
         $tags = $input['tags'];
 
         $punch = Punch::create($input);
         if($tags)
         {
-            if (is_array($tags))
+            foreach ($tags as $index => $tag)
             {
-                foreach ($tags as $index => $tag)
+                $tag = PunchTag::find($tag);
+                if ( ! $tag) // Validation
                 {
-                    $tag = PunchTag::find($tag);
-                    if ( ! $tag)
-                    {
-                        return $this->respondNotFound('Punch Tag was not found.');
-                    }
-                    $tags[$index] = $tag->id;
+                    return $this->respondFailedValidation('Punch Tag does not exist.');
                 }
-                $punch->tags()->attach($tags);
-            } else {
-                $tag = PunchTag::find($tags);
-                if ( ! $tags)
-                {
-                    return $this->respondNotFound('Punch Tag was not found.');
-                }
-                $punch->tags()->attach($tag->id);
+                $tags[$index] = $tag->id;
             }
+            $punch->tags()->attach($tags);
         }
 
         $punch = $punch->fresh(['tags']);
