@@ -14,7 +14,7 @@ class CreatePunchPunchTagTable extends Migration {
 	{
 		Schema::create('punch_punch_tag', function(Blueprint $table)
 		{
-			$table->increments('id');
+			$table->primary(['punch_id','punch_tag_id']);
             $table->integer('punch_id')->unsigned()->index();
             $table->foreign('punch_id')->references('id')->on('punches')->onDelete('cascade');
             $table->integer('punch_tag_id')->unsigned()->index();
