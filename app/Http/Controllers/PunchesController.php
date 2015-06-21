@@ -68,7 +68,7 @@ class PunchesController extends ApiController {
 
         if($input['end'] === '') unset($input['end']);
 
-        $tags = Input::get('tags');
+        $tags = $input['tags'];
 
         $punch = Punch::create($input);
         if($tags)
@@ -95,7 +95,7 @@ class PunchesController extends ApiController {
             }
         }
 
-        $punch = Punch::with('tags')->find($punch->id);
+        $punch = $punch->with('tags')->first();
 
         return $this->respondCreated($this->punchesTransformer->transform($punch->toArray()), 'Punch Created');
     }
