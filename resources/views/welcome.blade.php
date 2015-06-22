@@ -94,16 +94,18 @@
     quick projects I do prefer to build larger and more complex apps. For the techies here is a little about
     me:
   </p>
-  <div class="col-md-11 col-md-offset-1">
-    I am a full-stack web developer specializing in PHP, Javascript and the Laravel Framework. I am proficient in
-    Javascript, HTML5, CSS3 and many javascript libraries for client side development and Laravel, MySQL, Linux, and
-    NGINX for server side. I am really starting to focus hard on coding principles, namely SOLID principles. I prefer to
-    spend the time and get things done right over leaving broken windows in my code to get it done. That said I
-    understand the importance of deadlines and can force myself to spit out hacky code when needed. I have experience in
-    many programming/scripting languages and frameworks. 13 out of 16 waking hours every day I am sitting
-    at my computer either studying or programming. I consider myself very resourceful and self sufficient. Despite some
-    previous work with C#, I do not work on Windows outside of testing a site in IE when I have to. <br/>
-    For more info and specifics ask for my resume or just ask a question.
+  <div class="row">
+    <div class="col-md-11 col-md-offset-1">
+      I am a full-stack web developer specializing in PHP, Javascript and the Laravel Framework. I am proficient in
+      Javascript, HTML5, CSS3 and many javascript libraries for client side development and Laravel, MySQL, Linux, and
+      NGINX for server side. I am really starting to focus hard on coding principles, namely SOLID principles. I prefer to
+      spend the time and get things done right over leaving broken windows in my code to get it done. That said I
+      understand the importance of deadlines and can force myself to spit out hacky code when needed. I have experience in
+      many programming/scripting languages and frameworks. 13 out of 16 waking hours every day I am sitting
+      at my computer either studying or programming. I consider myself very resourceful and self sufficient. Despite some
+      previous work with C#, I do not work on Windows outside of testing a site in IE when I have to. <br/>
+      For more info and specifics ask for my resume or just ask a question.
+    </div>
   </div>
 
   <h2>Technical Specs</h2>
