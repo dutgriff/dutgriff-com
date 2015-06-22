@@ -1,8 +1,6 @@
 <?php namespace DutGRIFF\Providers;
 
-use DutGRIFF\Services\GreaterThanFieldValidator;
 use Illuminate\Support\ServiceProvider;
-use Validator;
 
 class AppServiceProvider extends ServiceProvider {
 
@@ -13,10 +11,7 @@ class AppServiceProvider extends ServiceProvider {
 	 */
 	public function boot()
 	{
-        Validator::resolver(function($translator, $data, $rules, $messages)
-        {
-            return new greaterThanFieldValidator($translator, $data, $rules, $messages);
-        });
+        //
 	}
 
 	/**
