@@ -8,3 +8,6 @@ fixFooterPlacement = ->
 
 fixFooterPlacement()
 $(window).bind 'resize', fixFooterPlacement
+
+$('.overlay').css 'line-height', ->
+  return ''+$(this).height()+'px'

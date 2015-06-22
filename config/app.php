@@ -144,6 +144,7 @@ return [
 		'DutGRIFF\Providers\ConfigServiceProvider',
 		'DutGRIFF\Providers\EventServiceProvider',
 		'DutGRIFF\Providers\RouteServiceProvider',
+        'DutGRIFF\Providers\CustomValidatorServiceProvider',
 
 	],
 

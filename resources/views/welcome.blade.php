@@ -64,8 +64,9 @@
     </dd>
     <dt>Time Punch</dt>
     <dd>
-      My AngularJS project time tracker. This is how I log my hours. It will allows users with a 'client' role to see
-      how much time I spend on a project assigned to them and allow them to see in depth where the time goes.
+      My <s>AngularJS</s> Vue.js project time tracker. This is how I log my hours. It will allows users with a 'client'
+      role to see how much time I spend on a project assigned to them and allow them to see in depth where the time
+      goes.
     </dd>
     <dt>About Me</dt>
     <dd>

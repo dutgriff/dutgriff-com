@@ -44,6 +44,25 @@ a {
   }
 }
 
+.overlay {
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  position: absolute;
+  text-align: center;
+  z-index: 3;
+  background-color: rgba(255,255,255,.5);
+  line-height: 100px;
+  text-align: center;
+  span {
+    display: inline-block;
+    vertical-align: middle;
+    line-height: normal;
+    margin-top:0;
+  }
+}
+
 @media (max-width: @screen-xs-max) {
   #footer {
     li {

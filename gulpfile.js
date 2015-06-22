@@ -13,14 +13,21 @@ var elixir = require('laravel-elixir');
  */
 
 elixir(function(mix) {
-  mix.less('*.less', 'resources/css/built')
+
+  mix
+    .less('*.less', 'resources/css/built')
     .styles([
-      'built/app.css'
+      'built/app.css',
     ], 'public/css', 'resources/css')
     .coffee('*.coffee', 'resources/js/built')
     .scripts([
       'libs/jquery-2.1.4.min.js',
       'libs/bootstrap.min.js',
+      'libs/vue.min.js',
+      'libs/vue-resource.min.js',
+      'libs/moment.js',
+      'libs/moment-timezone-with-data-2010-2020.min.js',
+      'timepunch.js',
       'built/app.js'
     ], 'public/js', 'resources/js');
 
