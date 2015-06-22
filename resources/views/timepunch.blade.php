@@ -110,7 +110,21 @@
         <button type="submit" class="btn btn-default pull-right" v-attr="disabled: errors" v-on="click: createPunch">Create Punch</button>
       </div>
     </form>
-
-    <pre style="clear:both; font-size:12px">@{{ $data | json }}</pre>
+    <div class="row">
+      <div class="col-xs-12">
+        <h3>Up coming features:</h3>
+        <ul>
+          <li>Client side data validation.</li>
+          <li>Layout fixes for screen sizes</li>
+          <li>Tag picker dropdown/autocomplete</li>
+          <li>Enter key shouldn't submit form.</li>
+          <li>Enter key in tags field adds tag</li>
+          <li>Punch pagination for those long day. (Don't abuse this please)</li>
+          <li>Ability to view other dates</li>
+          <li>Ability to edit punches</li>
+          <li>Ability to edit tags</li>
+        </ul>
+      </div>
+    </div>
   </div>
 @stop
