@@ -28,7 +28,7 @@ class StorePunchRequest extends Request {
         // tags can't be attached more than once per punch
         return [
             'start'       => 'required|integer',
-            'end'         => 'integer',
+            'end'         => 'integer|greater_than_field:start',
             'name'        => 'required',
             'description' => '',
             'tags'        => 'array'
