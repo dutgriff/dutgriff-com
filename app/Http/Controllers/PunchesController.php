@@ -61,24 +61,9 @@ class PunchesController extends ApiController {
      */
     public function store(StorePunchRequest $request)
     {
-        $input = $request->input();
+        $punch = Punch::create($request->input());
 
-        $tags = $input['tags'];
-
-        $punch = Punch::create($input);
-        if($tags)
-        {
-            foreach ($tags as $index => $tag)
-            {
-                $tag = PunchTag::find($tag);
-                if ( ! $tag) // Validation
-                {
-                    return $this->respondFailedValidation('Punch Tag does not exist.');
-                }
-                $tags[$index] = $tag->id;
-            }
-            $punch->tags()->attach($tags);
-        }
+        $punch->tags()->attach($request->input('tags'));
 
         $punch = $punch->fresh(['tags']);
 
