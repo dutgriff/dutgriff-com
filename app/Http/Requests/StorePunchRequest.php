@@ -22,16 +22,12 @@ class StorePunchRequest extends Request {
 	 */
 	public function rules()
 	{
-        // Future validation:
-        // tags can't be attached more than once per punch
-        // name should be < 40 character
-        // description should be < than 100 character
         return [
             'start'       => 'required|integer',
             'end'         => 'integer|greater_than_field:start',
-            'name'        => 'required',
-            'description' => '',
-            'tags'        => 'array|exists:punch_tags,id'
+            'name'        => 'required|min:3|max:30',
+            'description' => 'max:1500',
+            'tags'        => 'array|exists:punch_tags,id|array_no_duplicates'
 		];
 	}
 
