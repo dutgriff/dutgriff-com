@@ -7,7 +7,8 @@ var timepunchToday = new Vue({
     punches: [],
     tags: [],
     newPunch: {start: '', end: '', name: '', description: '', tags: []},
-    tagInput: ''
+    tagInput: '',
+    serverErrors: []
   },
 
   computed: {
@@ -64,43 +65,52 @@ var timepunchToday = new Vue({
     },
     createPunch: function(e) {
       e.preventDefault();
-
-      this.newPunch.start = this.startUtc;
-      this.newPunch.end = this.endUtc;
-
-      if(this.newPunch.end === '')
-        delete this.newPunch.end;
+      this.serverErrors = [];
 
       var punch = Vue.util.extend({}, this.newPunch);
 
+      punch.start = this.startUtc;
+      punch.end = this.endUtc;
+
+      if(punch.end === '')
+        delete punch.end;
+
+      this.tagInput = '';
+
       this.$http.post('api/v1/punch', punch, function(response){
         this.punches.push(response.data.item);
+        this.newPunch = {start: '', end: '', name: '', description: '', tags: []};
       }).error(function(response, status, request){
-        console.log(response); // display these errors
+        this.handleErrorResponse(response); // display these errors
       });
-
-      this.newPunch = {start: '', end: '', name: '', description: '', tags: []};
-      this.tagInput = '';
     },
     createTag: function(tagName) {
+      this.serverErrors = [];
       this.$http.post('api/v1/punchtags', { name: tagName }, function(response) {
         this.tags.push(response.data.item);
         this.newPunch.tags.push(response.data.item.id);
+        this.tagInput = '';
       }).error(function(response, status, request){
-        console.log(response); // display these errors
+        this.handleErrorResponse(response); // display these errors
       });
-      this.tagInput = '';
     },
     parseUtcFromTime: function(timeString, format) {
       format = typeof format !== 'undefined' ? format : 'HH:mm';
       var utc = moment(timeString, format).tz('America/Chicago').format('X');
       return utc === "Invalid date" ? '' : utc;
+    },
+    handleErrorResponse: function(response) {
+      var timePunch = this;
+
+      $.each(response, function(index, messages){
+        timePunch.serverErrors = timePunch.serverErrors.concat(messages);
+      })
     }
   },
   filters: {
     formatTime: function (unixTimestamp) {
       if(unixTimestamp === null)
-        return ''
+        return '';
       else
         return moment(unixTimestamp, 'X').tz('America/Chicago').format('HH:mm');
     },

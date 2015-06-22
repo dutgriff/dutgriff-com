@@ -37,6 +37,11 @@
           <span class="h2 overlay-message">You must be logged in to create a punch.</span>
         </div>
       @endif
+        <div class="alert alert-danger" v-class="hidden: ! serverErrors.length" role="alert">
+          <ul class="list-unstyled">
+            <li v-repeat="message:serverErrors">@{{ message }}</li>
+          </ul>
+        </div>
       <div class="col-md-4">
         <div class="form-group">
           <label for="start">Start Time</label>
@@ -82,7 +87,6 @@
                   class="form-control"
                   id="tag"
                   v-model="tagInput"
-                  v-on="keyup:doSomething | key 'enter'"
                   placeholder="Tag name" />
               <span
                   class="glyphicon glyphicon-plus form-control-feedback text-success"
