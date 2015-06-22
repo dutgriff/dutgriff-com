@@ -51,12 +51,13 @@ var timepunchToday = new Vue({
         }
       });
 
-      if(tag)
-        this.newPunch.tags.push(tag.id);
-      else
+      if(tag) {
+        if(this.newPunch.tags.indexOf(tag.id) === -1)
+          this.newPunch.tags.push(tag.id);
+        this.tagInput = '';
+      } else {
         this.createTag(tagName);
-
-      this.tagInput = '';
+      }
     },
     removeTag: function(tagId) {
       var index = this.newPunch.tags.indexOf(tagId);
