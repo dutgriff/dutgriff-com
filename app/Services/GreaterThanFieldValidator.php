@@ -1,12 +1,10 @@
 <?php namespace DutGRIFF\Services;
 
-use Illuminate\Validation\Validator;
+class GreaterThanFieldValidator {
 
-class GreaterThanFieldValidator extends Validator {
-
-    public function validateGreaterThanField($attribute, $value, $parameters)
+    public function validateGreaterThanField($attribute, $value, $parameters, $validator)
     {
-        return floatval($value) > floatval($this->data[$parameters[0]]);
+        return floatval($value) > floatval($validator->getData()[$parameters[0]]);
     }
 
 }
