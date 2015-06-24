@@ -6,7 +6,7 @@
       <div class="col-md-10 col-md-offset-1">
         <h1>Welcome</h1>
         <p>
-          Thanks for registering! Unfortunately there isn't a whole lot going on here yet. I do ahve some things in the
+          Thanks for registering! Unfortunately there isn't a whole lot going on here yet. I do have some things in the
           works. Once I get around to creating a blog and a few more apps there may be some fun to have.
         </p>
         <p>
