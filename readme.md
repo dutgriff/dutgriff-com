@@ -1,6 +1,9 @@
+# Dead Repo
+I haven't used this in years
+
 ## DutGRIFF.com
 
-DutGRIFF.com is my personal site. It is basically a place for me the trow stuff I don't know where to put. Some day it
+DutGRIFF.com is my personal site. It is basically a place for me the throw stuff I don't know where to put. Some day it
 will offer features to clients, show off some stuff that I have built and give me a place to blog. There is no set
 direction for this project. Ideas and objectives will most likely change frequently.
 
